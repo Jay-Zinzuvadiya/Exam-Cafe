@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ExamCafe • Resources</title>
+  <style>
+    /* ====== Dark Theme (Internal CSS) ====== */
+    :root {
+      --bg: #0b1220;
+      --surface: #111827;
+      --card: #0f172a;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #3b82f6;
+      --primary-contrast: #0b1220;
+      --border: #1f2937;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .nav {
+      max-width: 980px; margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 0.6rem; font-weight: 700;
+    }
+    .logo {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), #22c55e);
+      display: grid; place-items: center; color: #fff; font-weight: 700;
+    }
+    .nav-actions { margin-left: auto; display: flex; gap: 0.5rem; }
+    .select {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 0.4rem 0.6rem;
+    }
+
+    /* Layout */
+    main {
+      max-width: 980px; margin: 1.25rem auto; padding: 0 1rem;
+      display: grid; gap: 1rem;
+    }
+    .pps, .calculus, .fcs, .wd, .eee  {
+      background: var(--surface); 
+      border: 1px solid var(--border);
+      border-radius: var(--radius); 
+      padding: 1rem; 
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow);
+    }
+    .hero h1 { margin: 0 0 0.25rem 0; font-size: 1.4rem; }
+    .sub { color: var(--muted); margin: 0.25rem 0 0; }
+
+    .grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+    }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    /* Cards and sections */
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem; box-shadow: var(--shadow);
+    }
+    .card h2 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+    .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+    .item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.6rem 0.75rem; border: 1px solid var(--border);
+      border-radius: 10px; background: #0c1628;
+    }
+    .item .meta { color: var(--muted); font-size: 0.85rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.45rem 0.7rem; border-radius: 8px; border: 1px solid var(--primary);
+      color: var(--text); background: transparent; cursor: pointer;
+    }
+    .btn:hover { background: rgba(59,130,246,0.12); }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .tab {
+      padding: 0.45rem 0.75rem; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--card); color: var(--text);
+      cursor: pointer; font-size: 0.95rem;
+    }
+    .tab.active {
+      border-color: var(--primary);
+      box-shadow: inset 0 0 0 1px var(--primary);
+    }
+    .panel { display: none; }
+    .panel.active { display: grid; gap: 0.6rem; }
+
+    /* Footer */
+    footer { text-align: center; color: var(--muted); padding: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">EC</div>
+        <span>ExamCafe</span>
+      </div>
+      <div class="nav-actions">
+        <label for="subject" style="color: var(--muted)">Subject:</label>
+        <select id="subject" class="select">
+          <option value="fcs">Fundamentals of Computer Science</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="fcs">
+      
+      <div class="fcs">
+        <h1>Fundamentals of Computer Science</h1>
+      </div>
+      
+    </section>
+    <section class="hero">
+      <h1>Resources</h1>
+      <p class="sub">Assignments, Lecture Notes, PPTs, YouTube Links, and Question Bank—organized per subject.</p>
+    </section>
+
+    <section class="card">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-panel="assignments">Assignments</button>
+        <button class="tab" data-panel="notes">Lecture notes</button>
+        <button class="tab" data-panel="ppts">PPT</button>
+        <button class="tab" data-panel="youtube">YouTube links</button>
+        <button class="tab" data-panel="qbank">Question bank</button>
+      </div>
+
+      <div id="assignments" class="panel active"></div>
+      <div id="notes" class="panel"></div>
+      <div id="ppts" class="panel"></div>
+      <div id="youtube" class="panel"></div>
+      <div id="qbank" class="panel"></div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Quick tips</h2>
+        <ul class="list">
+          <li class="item"><span>Replace “#” with your actual links</span><span class="meta">PDF, DOCX, PPTX, YouTube</span></li>
+          <li class="item"><span>Add subjects in the data object</span><span class="meta">Header dropdown</span></li>
+          <li class="item"><span>Use consistent naming</span><span class="meta">Easy scanning</span></li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Downloads</h2>
+        <ul class="list" id="downloadsList">
+          <li class="item"><span>Download all (current subject)</span><button class="btn" id="downloadAll">Prepare ZIP</button></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>© 2025 ExamCafe • Dark, simple, and focused.</footer>
+
+  <script>
+  
+    // Demo data: replace "#" with real URLs
+    const DATA = {
+            fcs: {
+        assignments: [
+          { title: "", link: "", meta: "Due: 15 Dec" },
+          { title: "", link: "", meta: "Due: 15 Dec" },
+          { title: "", link: "", meta: "Due: 15 Dec" },
+        ],
+        notes: [
+          { title: "Introduction to Computer and Its Architecture", link: "FOCUnit1.pdf", meta: "PDF" },
+          { title: "Number Systems", link: "FOCUnit2.pdf", meta: "PDF" },
+          { title: "Computational Problem Solving", link: "FOCUnit3.pdf", meta: "PDF" },
+        ],
+        ppts: [
+          { title: "Introduction to Computer and Its Architecture", link: "FOCUnit1.pdf", meta: "PDF" },
+          { title: "Number Systems", link: "FOCUnit2.pdf", meta: "PDF" },
+          { title: "Computational Problem Solving", link: "FOCUnit3.pdf", meta: "PDF" },
+        ],
+        youtube: [
+          { title: "Introduction to Computer and its Architecture", link: "https://www.youtube.com/watch?v=agaLaSafbwc", meta: "50m" },
+          { title: "Number Systems", link: "https://www.youtube.com/watch?v=MxjJqq3B6JU", meta: "50m" },
+          { title: "Computational Problem Solving", link: "https://www.youtube.com/watch?v=b8XUWPbf8ko", meta: "50m" },
+          { title: "INtroduction to System Software and Programming Languages", link: "https://www.youtube.com/watch?v=8XBtAjKwCm4", meta: "50m" },
+        ],
+        qbank: [
+          { title: "FOC Question Bank", link: "FOCQue.pdf", meta: "PDF • 80 marks" },
+        ],
+      },
+    };
+
+    const subjectSelect = document.getElementById('subject');
+    const panels = {
+      assignments: document.getElementById('assignments'),
+      notes: document.getElementById('notes'),
+      ppts: document.getElementById('ppts'),
+      youtube: document.getElementById('youtube'),
+      qbank: document.getElementById('qbank'),
+    };
+
+    function renderList(items) {
+      if (!items || !items.length) {
+        return `<div class="item"><span>No items yet</span><span class="meta">Check back soon</span></div>`;
+      }
+      return items.map(i => `
+        <div class="item">
+          <span><a href="${i.link}" target="_blank" rel="noopener">${i.title}</a></span>
+          <span class="meta">${i.meta || ''}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderSubject(key) {
+      const data = DATA[key];
+      panels.assignments.innerHTML = renderList(data.assignments);
+      panels.notes.innerHTML = renderList(data.notes);
+      panels.ppts.innerHTML = renderList(data.ppts);
+      panels.youtube.innerHTML = renderList(data.youtube);
+      panels.qbank.innerHTML = renderList(data.qbank);
+    }
+
+    // Tabs interaction
+    document.getElementById('tabs').addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab');
+      if (!btn) return;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      const id = btn.getAttribute('data-panel');
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    });
+
+    // Download all (wire to your ZIP)
+    document.getElementById('downloadAll').addEventListener('click', () => {
+      const subjectName = subjectSelect.options[subjectSelect.selectedIndex].text;
+      alert(`Prepare a ZIP for: ${subjectName}`);
+      // window.location.href = 'your-zip-url.zip';
+    });
+
+    // Initial render
+    subjectSelect.addEventListener('change', e => renderSubject(e.target.value));
+    renderSubject(subjectSelect.value); // default to first option
+  </script>
+</body>
+</html>
